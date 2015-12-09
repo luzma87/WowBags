@@ -2,7 +2,16 @@
  * Created by lmunda on 12/9/15.
  */
 
-function createBag(slots, name, icon, money) {
+function createBag(attrs) {
+    var slots = attrs.slots;
+    var name = attrs.name;
+    var icon = attrs.icon;
+    var money = attrs.money;
+
+    if (name.length > 15) {
+        name = name.substring(0, 12) + "...";
+    }
+
     var totalRows = Math.ceil(slots / 4);
     var createdSlots = 0;
 
@@ -23,18 +32,26 @@ function createBag(slots, name, icon, money) {
     for (var row = 0; row < totalRows; row++) {
         if (createdSlots < slots) {
             var $row = $("<div class='bag-row'></div>");
-            var clase = "middle";
+            var clase1 = "middle";
             if (row == 0) {
-                clase = "top";
+                clase1 = "top";
             } else if (row == totalRows - 1) {
-                clase = "bottom";
+                clase1 = "bottom";
             }
-            if (createdSlots % 4 == 0) {
-                clase += " left";
-            } else if (createdSlots % 4 == 3) {
-                clase += " right";
-            } else {
-                clase += " center";
+            for (var slot = 0; slot < 4; slot++) {
+                if (createdSlots < slots) {
+                    var clase2 = " center";
+                    var $slot = $("<div></div>");
+                    if (slot == 0) {
+                        clase2 = " left";
+                    } else if (slot == 3 || createdSlots == slots - 1) {
+                        clase2 = " right";
+                    }
+                    var clase = "bag-slot " + clase1 + clase2;
+                    $slot.addClass(clase);
+                    $row.append($slot);
+                    createdSlots++;
+                }
             }
 
             $content.append($row);
@@ -42,6 +59,21 @@ function createBag(slots, name, icon, money) {
     }
 
     $bag.append($header).append($content);
+
+    if (money) {
+        var $money = $("<div class='bag-money'></div>");
+        var gold = money.gold || 0;
+        var silver = money.silver || 0;
+        var copper = money.copper || 0;
+
+        var $gold = $("<div class='bag-money-gold'>" + gold + "</div>");
+        var $silver = $("<div class='bag-money-silver'>" + silver + "</div>");
+        var $copper = $("<div class='bag-money-copper'>" + copper + "</div>");
+
+        $money.append($copper).append($silver).append($gold);
+
+        $bag.append($money);
+    }
 
     $("body").append($bag);
 }

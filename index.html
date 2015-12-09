@@ -16,41 +16,6 @@
     </head>
     <body>
 
-        <div class="bag ui-corner-all">
-            <div class="bag-header">
-                <div class="bag-logo">
-                    <img src="images/bags/backpack_16.jpg" class="bag-logo-image"/>
-                </div>
-                <div class="bag-name">Backpack</div>
-                <div class="bag-close"></div>
-            </div>
-            <div class="bag-content">
-                <div class="bag-row">
-                    <div class="bag-slot top left"></div>
-                    <div class="bag-slot top center"></div>
-                    <div class="bag-slot top center"></div>
-                    <div class="bag-slot top right"></div>
-                </div>
-                <div class="bag-row">
-                    <div class="bag-slot middle left"></div>
-                    <div class="bag-slot middle center"></div>
-                    <div class="bag-slot middle center"></div>
-                    <div class="bag-slot middle right"></div>
-                </div>
-                <div class="bag-row">
-                    <div class="bag-slot bottom left"></div>
-                    <div class="bag-slot bottom center"></div>
-                    <div class="bag-slot bottom center"></div>
-                    <div class="bag-slot bottom right"></div>
-                </div>
-            </div>
-            <div class="bag-money">
-                <div class="bag-money-copper">99</div>
-                <div class="bag-money-silver">99</div>
-                <div class="bag-money-gold">10000</div>
-            </div>
-        </div>
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
@@ -60,7 +25,21 @@
         <script src="js/bag_generator.js"></script>
 
         <script type="text/javascript">
-            createBag(6, "Test bag", "images/bags/backpack_16.jpg");
+            createBag({
+                slots : 28,
+                name  : "Gronnskin bag",
+                icon  : "images/bags/gronnskin_28.jpg"
+            });
+            createBag({
+                slots : 16,
+                name  : "Backpack",
+                icon  : "images/bags/backpack_16.jpg"
+            });
+            createBag({
+                slots : 6,
+                name  : "Linen bag",
+                icon  : "images/bags/linen_6.jpg"
+            });
         </script>
     </body>
 </html>
