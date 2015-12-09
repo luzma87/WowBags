@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WoW Bags</title>
+
+        <!-- Bootstrap -->
+        <link href="js/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="js/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="js/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet">
+
+        <link href="css/bags.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <div class="bag ui-corner-all">
+            <div class="bag-header">
+                <div class="bag-logo">
+                    <img src="images/bags/backpack_16.jpg" class="bag-logo-image"/>
+                </div>
+                <div class="bag-name">Backpack</div>
+                <div class="bag-close"></div>
+            </div>
+            <div class="bag-content">
+                <div class="bag-row">
+                    <div class="bag-slot top left"></div>
+                    <div class="bag-slot top center"></div>
+                    <div class="bag-slot top center"></div>
+                    <div class="bag-slot top right"></div>
+                </div>
+                <div class="bag-row">
+                    <div class="bag-slot middle left"></div>
+                    <div class="bag-slot middle center"></div>
+                    <div class="bag-slot middle center"></div>
+                    <div class="bag-slot middle right"></div>
+                </div>
+                <div class="bag-row">
+                    <div class="bag-slot bottom left"></div>
+                    <div class="bag-slot bottom center"></div>
+                    <div class="bag-slot bottom center"></div>
+                    <div class="bag-slot bottom right"></div>
+                </div>
+            </div>
+            <div class="bag-money">
+                <div class="bag-money-copper">99</div>
+                <div class="bag-money-silver">99</div>
+                <div class="bag-money-gold">10000</div>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="js/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+        <script src="js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+        <script src="js/bag_generator.js"></script>
+
+        <script type="text/javascript">
+            createBag(6, "Test bag", "images/bags/backpack_16.jpg");
+        </script>
+    </body>
+</html>
