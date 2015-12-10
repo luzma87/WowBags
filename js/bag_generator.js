@@ -15,6 +15,8 @@ function createBag(attrs) {
         $bag.append(createMoney());
     }
 
+    makeBagDraggable($bag);
+
     $("body").append($bag);
 }
 
@@ -101,4 +103,11 @@ function createMoney() {
     $money.append($copper).append($silver).append($gold);
 
     return $money;
+}
+
+function makeBagDraggable($bag) {
+    $bag.draggable({
+        handle      : ".js-handle",
+        containment : "parent"
+    });
 }
