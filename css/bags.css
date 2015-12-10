@@ -127,3 +127,7 @@ body {
 .js-handle {
     cursor : move;
 }
+
+.js-link {
+    cursor: pointer;
+}
