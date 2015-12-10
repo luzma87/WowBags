@@ -1,135 +1,129 @@
 body {
-    padding: 40px;
-    font-family: 'Alegreya', serif;
-    /*font-weight: bold;*/
+    padding     : 10px;
+    font-family : 'Alegreya', serif;
+}
+
+.row {
+    margin : 0;
 }
 
 .bag {
-    background: url("../images/bag_bg.png");
-    width: 185px;
-    min-height: 42px;
-    padding-left: 3px;
-    border: solid 3px #756E5A;
-    padding-bottom: 3px;
-    position: relative;
+    background     : url("../images/bag_bg.png");
+    width          : 185px;
+    min-height     : 42px;
+    padding-left   : 3px;
+    border         : solid 3px #756E5A;
+    padding-bottom : 3px;
+    position       : relative;
 }
 
 .bag-header {
-    height: 35px;
+    height : 35px;
 }
 
 .bag-logo {
-    width: 44px;
-    height: 44px;
-    background-size: 42px 42px;
-    position: absolute;
-    left: -10px;
-    top: -10px;
-
-    background: #756E5A;
-    -webkit-clip-path: circle(22px at center);
-    clip-path: circle(22px at center);
+    width           : 48px;
+    height          : 48px;
+    background-size : 42px 42px;
+    position        : absolute;
+    left            : -12px;
+    top             : -12px;
+    background      : #756E5A;
 }
 
 .bag-logo-image {
-    -webkit-clip-path: circle(20px at center);
-    clip-path: circle(20px at center);
-    width: 42px;
-    height: 42px;
+    width    : 42px;
+    height   : 42px;
 
-    position: absolute;
-    top: 1px;
-    left: 1px;
+    position : absolute;
+    top      : 3px;
+    left     : 3px;
 }
 
 .bag-name {
-    margin-left: 31px;
-    padding-left: 5px;
-    color: #fff;
-    float: left;
-    width: 123px;
-    height: 21px;
-    background: url("../images/bag_name.png");
-    padding-top: 1px;
+    margin-left  : 31px;
+    padding-left : 5px;
+    color        : #fff;
+    float        : left;
+    width        : 123px;
+    height       : 21px;
+    background   : url("../images/bag_name.png");
+    padding-top  : 1px;
 }
 
 .bag-close {
-    width: 22px;
-    height: 23px;
-    background: url("../images/bag_close.png");
-    float: right;
+    width      : 22px;
+    height     : 23px;
+    background : url("../images/bag_close.png");
+    float      : right;
 }
 
-.bag-row {
-    height: 42px;
+.slot-height {
+    height : 42px;
 }
 
-.bag-slot {
-    width: 43px;
-    height: 42px;
-    background: url("../images/bag_slot.png");
-    float: right;
+.top-row.left-slot {
+    background : url("../images/bag_slot_top_left.png");
 }
 
-.bag-slot.top.left {
-    background: url("../images/bag_slot_top_left.png");
+.top-row.center-slot {
+    background : url("../images/bag_slot_top_center.png");
 }
 
-.bag-slot.top.center {
-    background: url("../images/bag_slot_top_center.png");
+.top-row.right-slot {
+    background : url("../images/bag_slot_top_right.png");
 }
 
-.bag-slot.top.right {
-    background: url("../images/bag_slot_top_right.png");
+.middle-row.left-slot {
+    background : url("../images/bag_slot_middle_left.png");
 }
 
-.bag-slot.middle.left {
-    background: url("../images/bag_slot_middle_left.png");
+.middle-row.center-slot {
+    background : url("../images/bag_slot_middle_center.png");
 }
 
-.bag-slot.middle.center {
-    background: url("../images/bag_slot_middle_center.png");
+.middle-row.right-slot {
+    background : url("../images/bag_slot_middle_right.png");
 }
 
-.bag-slot.middle.right {
-    background: url("../images/bag_slot_middle_right.png");
+.bottom-row.left-slot {
+    background : url("../images/bag_slot_bottom_left.png");
 }
 
-.bag-slot.bottom.left {
-    background: url("../images/bag_slot_bottom_left.png");
+.bottom-row.center-slot {
+    background : url("../images/bag_slot_bottom_center.png");
 }
 
-.bag-slot.bottom.center {
-    background: url("../images/bag_slot_bottom_center.png");
-}
-
-.bag-slot.bottom.right {
-    background: url("../images/bag_slot_bottom_right.png");
+.bottom-row.right-slot {
+    background : url("../images/bag_slot_bottom_right.png");
 }
 
 .bag-money {
-    height: 18px;
-    margin-top: 2px;
-    background: url("../images/coin_slot.png") no-repeat;
-    color: #78642D;
+    height     : 18px;
+    margin-top : 2px;
+    background : url("../images/coin_slot.png") no-repeat;
+    color      : #78642D;
 }
 
 .bag-money-gold, .bag-money-silver, .bag-money-copper {
-    float: right;
-    padding-left: 12px;
+    padding-left : 12px;
 }
 
 .bag-money-gold {
-    background: url("../images/coin_gold.png") no-repeat 0 3px;
-    margin-right: 5px;
+    background   : url("../images/coin_gold.png") no-repeat 0 3px;
+    margin-right : 5px;
 }
 
 .bag-money-silver {
-    background: url("../images/coin_silver.png") no-repeat 0 3px;
-    margin-right: 5px;
+    background   : url("../images/coin_silver.png") no-repeat 0 3px;
+    margin-right : 5px;
 }
 
 .bag-money-copper {
-    background: url("../images/coin_copper.png") no-repeat 0 3px;
-    margin-right: 12px;
+    background   : url("../images/coin_copper.png") no-repeat 0 3px;
+    margin-right : 12px;
+}
+
+.js-handle {
+    cursor : move;
 }

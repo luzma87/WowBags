@@ -15,9 +15,6 @@
 
         <link href="css/bags.css" rel="stylesheet">
 
-    </head>
-    <body>
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
@@ -26,26 +23,30 @@
 
         <script src="js/bag_generator.js"></script>
 
+    </head>
+    <body>
         <script type="text/javascript">
+            $(function () {
 //            createBag({
 //                slots : 28,
 //                name  : "Gronnskin bag",
 //                icon  : "images/bags/gronnskin_28.jpg"
 //            });
-            createBag({
-                slots : 16,
-                name  : "Backpack",
-                icon  : "images/bags/backpack_16.jpg",
-                money : {
-                    gold   : 1500,
-                    silver : 57,
-                    copper : 45
-                }
-            });
-            createBag({
-                slots : 6,
-                name  : "Linen bag",
-                icon  : "images/bags/linen_6.jpg"
+                createBag({
+                    slots : 16,
+                    name  : "Backpack",
+                    icon  : "images/bags/backpack_16.jpg",
+                    money : {
+                        gold   : 1500,
+                        silver : 57,
+                        copper : 45
+                    }
+                });
+                createBag({
+                    slots : 6,
+                    name  : "Linen bag",
+                    icon  : "images/bags/linen_6.jpg"
+                });
             });
         </script>
     </body>
