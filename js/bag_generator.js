@@ -99,10 +99,28 @@ $.widget("lzm.bag", {
     },
 
     _makeSlotDroppable : function ($slot) {
+        var moveOldItem = function ($oldItem) {
+            if (this._originSlot.hasClass("occupied")) {
+                this.addItem($oldItem);
+            } else {
+                this._originSlot.append($oldItem);
+                this._originSlot.addClass("occupied");
+            }
+        };
         $slot.droppable({
             revert : "invalid",
-            drop   : function (_, _) {
-                $(this).addClass("occupied");
+            drop   : function (event, ui) {
+                var $this = $(this);
+                var $item = ui.draggable;
+                if ($this.hasClass("occupied")) {
+                    moveOldItem($this.children());
+                }
+                $this.append($item);
+                $item.css({
+                    top  : 0,
+                    left : 0
+                });
+                $this.addClass("occupied");
             }
         });
     },
@@ -177,13 +195,20 @@ $.widget("lzm.bag", {
     },
 
     _makeItemDraggable : function ($item) {
+        var setOriginSlot = function ($slot) {
+            this._originSlot = $slot;
+        };
         $item.draggable({
             snap     : ".item-slot ",
             snapMode : "inner",
+            stack    : ".item",
             start    : function (event, ui) {
-                console.log($(this).closest(".item-slot"));
+                setOriginSlot($(this).parent());
                 $(this).closest(".item-slot").removeClass("occupied");
                 $item.tooltip('hide')
+            },
+            drag     : function () {
+                $item.tooltip('hide');
             }
         });
     }
