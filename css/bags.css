@@ -17,6 +17,10 @@ body {
     position       : relative;
 }
 
+.bank {
+    background : url("../images/bank_bg.png");
+}
+
 .bag-header {
     height : 35px;
 }
@@ -129,5 +133,5 @@ body {
 }
 
 .js-link {
-    cursor: pointer;
+    cursor : pointer;
 }

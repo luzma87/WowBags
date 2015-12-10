@@ -29,7 +29,12 @@
             $(function () {
                 $("<div></div>")
                         .appendTo("body")
-                        .bag();
+                        .bag({
+                            name      : "Bank",
+                            class : "bank",
+                            draggable : false,
+                            closable  : false
+                        });
                 $("<div></div>")
                         .appendTo("body")
                         .bag({
@@ -37,7 +42,7 @@
                             name  : "Backpack",
                             icon  : "images/bags/backpack_16.jpg",
                             money : {
-                                gold : 1500,
+                                gold   : 1500,
                                 silver : 57,
                                 copper : 45
                             }

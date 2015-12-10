@@ -4,14 +4,13 @@
 $.widget("lzm.bag", {
     // default options
     options : {
-        slots : 6,
-        name  : "Linen bag",
-        icon  : "images/bags/linen_6.jpg",
-        money : false,
-
-        // callbacks
-        change : null,
-        random : null
+        slots     : 6,
+        name      : "Linen bag",
+        icon      : "images/bags/linen_6.jpg",
+        money     : false,
+        draggable : true,
+        closable  : true,
+        class     : ""
     },
 
     // the constructor
@@ -24,15 +23,23 @@ $.widget("lzm.bag", {
         this._totalRows = Math.ceil(this._totalSlots / 4);
         this._createdSlots = 0;
         this.bag = this.element;
-        this.bag.addClass('bag ui-corner-all');
+        this.bag.addClass('bag ui-corner-all')
+            .addClass(this.options.class);
 
         this.bag.append(this._createHeader()).append(this._createContent());
         if (this.options.money) {
             this.bag.append(this._createMoney());
         }
-
-        this._makeBagDraggable();
-        this._makeBagClosable();
+        if (this.options.draggable) {
+            this._makeBagDraggable();
+        } else {
+            this.bag.find(".js-handle").removeClass("js-handle");
+        }
+        if (this.options.closable) {
+            this._makeBagClosable();
+        } else {
+            this.bag.find(".bag-close").remove();
+        }
     },
 
     _createHeader : function () {
@@ -115,49 +122,5 @@ $.widget("lzm.bag", {
         this.bag.find(".bag-close").on("click", function () {
             $(this).parents(".bag").hide();
         });
-    },
-
-    // a public method to change the color to a random value
-    // can be called directly via .colorize( "random" )
-    random : function (event) {
-        var colors = {
-            red   : Math.floor(Math.random() * 256),
-            green : Math.floor(Math.random() * 256),
-            blue  : Math.floor(Math.random() * 256)
-        };
-
-        // trigger an event, check if it's canceled
-        if (this._trigger("random", event, colors) !== false) {
-            this.option(colors);
-        }
-    },
-
-    // events bound via _on are removed automatically
-    // revert other modifications here
-    _destroy : function () {
-        // remove generated elements
-        this.changer.remove();
-
-        this.element
-            .removeClass("custom-colorize")
-            .enableSelection()
-            .css("background-color", "transparent");
-    },
-
-    // _setOptions is called with a hash of all options that are changing
-    // always refresh when changing options
-    _setOptions : function () {
-        // _super and _superApply handle keeping the right this-context
-        this._superApply(arguments);
-        this._refresh();
-    },
-
-    // _setOption is called for each individual option that is changing
-    _setOption : function (key, value) {
-        // prevent invalid color values
-        if (/red|green|blue/.test(key) && (value < 0 || value > 255)) {
-            return;
-        }
-        this._super(key, value);
     }
 });
