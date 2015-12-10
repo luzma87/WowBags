@@ -7,6 +7,10 @@ body {
     margin : 0;
 }
 
+.col-md-3 {
+    padding : 0;
+}
+
 .bag {
     background     : url("../images/bag_bg.png");
     width          : 185px;
@@ -64,6 +68,10 @@ body {
 
 .slot-height {
     height : 42px;
+}
+
+.occupied {
+    background : red !important;
 }
 
 .top-row.left-slot {
@@ -126,12 +134,4 @@ body {
 .bag-money-copper {
     background   : url("../images/coin_copper.png") no-repeat 0 3px;
     margin-right : 12px;
-}
-
-.js-handle {
-    cursor : move;
-}
-
-.js-link {
-    cursor : pointer;
 }
