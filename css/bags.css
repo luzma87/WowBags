@@ -1,5 +1,7 @@
 body {
     padding: 40px;
+    font-family: 'Alegreya', serif;
+    /*font-weight: bold;*/
 }
 
 .bag {
@@ -43,11 +45,12 @@ body {
 .bag-name {
     margin-left: 31px;
     padding-left: 5px;
-    color: #78642D;
+    color: #fff;
     float: left;
     width: 123px;
     height: 21px;
     background: url("../images/bag_name.png");
+    padding-top: 1px;
 }
 
 .bag-close {
@@ -65,7 +68,7 @@ body {
     width: 43px;
     height: 42px;
     background: url("../images/bag_slot.png");
-    float: left;
+    float: right;
 }
 
 .bag-slot.top.left {

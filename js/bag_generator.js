@@ -34,18 +34,18 @@ function createBag(attrs) {
             var $row = $("<div class='bag-row'></div>");
             var clase1 = "middle";
             if (row == 0) {
-                clase1 = "top";
-            } else if (row == totalRows - 1) {
                 clase1 = "bottom";
+            } else if (row == totalRows - 1) {
+                clase1 = "top";
             }
             for (var slot = 0; slot < 4; slot++) {
                 if (createdSlots < slots) {
                     var clase2 = " center";
                     var $slot = $("<div></div>");
                     if (slot == 0) {
-                        clase2 = " left";
-                    } else if (slot == 3 || createdSlots == slots - 1) {
                         clase2 = " right";
+                    } else if (slot == 3 || createdSlots == slots - 1) {
+                        clase2 = " left";
                     }
                     var clase = "bag-slot " + clase1 + clase2;
                     $slot.addClass(clase);
@@ -54,7 +54,7 @@ function createBag(attrs) {
                 }
             }
 
-            $content.append($row);
+            $content.prepend($row);
         }
     }
 
