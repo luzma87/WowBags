@@ -22,23 +22,23 @@ $.widget("lzm.bag", {
         this._totalSlots = this.options.slots;
         this._totalRows = Math.ceil(this._totalSlots / 4);
         this._createdSlots = 0;
-        this.bag = this.element;
-        this.bag.addClass('bag ui-corner-all')
+        this._bag = this.element;
+        this._bag.addClass('bag ui-corner-all')
             .addClass(this.options.class);
 
-        this.bag.append(this._createHeader()).append(this._createContent());
+        this._bag.append(this._createHeader()).append(this._createContent());
         if (this.options.money) {
-            this.bag.append(this._createMoney());
+            this._bag.append(this._createMoney());
         }
         if (this.options.draggable) {
             this._makeBagDraggable();
         } else {
-            this.bag.find(".js-handle").removeClass("js-handle");
+            this._bag.find(".js-handle").removeClass("js-handle");
         }
         if (this.options.closable) {
             this._makeBagClosable();
         } else {
-            this.bag.find(".bag-close").remove();
+            this._bag.find(".bag-close").remove();
         }
     },
 
@@ -92,9 +92,19 @@ $.widget("lzm.bag", {
         } else if (currentSlot == 3 || this._createdSlots == this._totalSlots - 1) {
             clase2 = " left-slot";
         }
-        var clase = "col-md-3 pull-right slot-height " + clase1 + clase2;
+        var clase = "col-md-3 pull-right item-slot slot-height " + clase1 + clase2;
         $slot.addClass(clase);
+        this._makeSlotDroppable($slot);
         return $slot;
+    },
+
+    _makeSlotDroppable : function ($slot) {
+        $slot.droppable({
+            revert : "invalid",
+            drop   : function (_, _) {
+                $(this).addClass("occupied");
+            }
+        });
     },
 
     _createMoney : function () {
@@ -110,7 +120,7 @@ $.widget("lzm.bag", {
     },
 
     _makeBagDraggable : function () {
-        this.bag.draggable({
+        this._bag.draggable({
             handle      : ".js-handle",
             containment : "parent",
             snap        : ".bag",
@@ -119,8 +129,62 @@ $.widget("lzm.bag", {
     },
 
     _makeBagClosable : function () {
-        this.bag.find(".bag-close").on("click", function () {
+        this._bag.find(".bag-close").on("click", function () {
             $(this).parents(".bag").hide();
+        });
+    },
+
+    addItem : function (item) {
+        var $slot = this._bag.find(".item-slot").not(".occupied").first();
+        var $item = this.createItem(item);
+        $slot.html($item).addClass("occupied");
+    },
+
+    createItem : function (item) {
+        var $item = $("<div class='item ui-corner-all js-handle'></div>");
+        var $img = $("<img class='img-rounded item-image slot-height' src='" + item.icon + "'/>");
+        $item.html($img);
+        this._addItemTooltip($item, item);
+        this._makeItemDraggable($item);
+        return $item;
+    },
+
+    _addItemTooltip : function ($item, item) {
+        $item.tooltip({
+            html      : true,
+            placement : "auto",
+            title     : function () {
+                var html = "<div class='item-name " + item.rarity + "'>" + item.name + "</div>";
+                html += "<div class='item-level'>Item Level " + item.level + "</div>";
+                if (item.bop) {
+                    html += "<div class='item-bop'>" + item.bop + "</div>";
+                }
+                if (item.slot) {
+                    html += "<div class='item-slot'>" + item.slot + "</div>";
+                }
+                if (item.unique) {
+                    html += "<div class='item-unique'>Unique</div>";
+                }
+                if (item.slots) {
+                    html += "<div class='item-slots'>" + item.slots + " Slot Bag</div>";
+                }
+                if (item.requires) {
+                    html += "<div class='item-requires'>Requires " + item.requires + "</div>";
+                }
+                return html;
+            }
+        });
+    },
+
+    _makeItemDraggable : function ($item) {
+        $item.draggable({
+            snap     : ".item-slot ",
+            snapMode : "inner",
+            start    : function (event, ui) {
+                console.log($(this).closest(".item-slot"));
+                $(this).closest(".item-slot").removeClass("occupied");
+                $item.tooltip('hide')
+            }
         });
     }
 });
